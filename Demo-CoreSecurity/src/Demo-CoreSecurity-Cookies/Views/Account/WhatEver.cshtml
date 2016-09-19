@@ -1,0 +1,16 @@
+﻿@using System.Collections.Generic
+@{
+
+    if (null != ViewData["claimlist"])
+    {
+        foreach (var item in ViewData["claimlist"] as List<string>)
+        {
+
+            @item;
+            <br />
+        }
+
+
+    }
+
+}
