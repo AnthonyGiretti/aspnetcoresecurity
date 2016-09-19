@@ -37,6 +37,11 @@ namespace Demo_CoreSecurity_Autorization.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> Forbidden()
+        {
+            return View();
+        }
     }
 }
 

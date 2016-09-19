@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.DataProtection;
+using System.IO;
 
 namespace Demo_CoreSecurity_DataProtection
 {
@@ -37,6 +39,11 @@ namespace Demo_CoreSecurity_DataProtection
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp\keys"))
+                .SetApplicationName("Demo MSDEVMTL")
+                .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
